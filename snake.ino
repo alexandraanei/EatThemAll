@@ -102,20 +102,20 @@ void loop() {
       xAxis = simple(analogRead(VRX_PIN));
       yAxis = simple(analogRead(VRY_PIN));
         
-      if (yAxis > 5 && direction != "up") { //If player moves the analog stick up, and if snake isn't going down.
+      if (yAxis > 5 && direction != "up") { 
         direction = "down";
       }
-      if (yAxis < 3 && direction != "down") { //If player moves the analog stick down, and if snake isn't going up.
+      if (yAxis < 3 && direction != "down") {
         direction = "up";
       }
-      if (xAxis < 3 && direction != "left") { //If player moves the analog stick right, and if snake isn't going left.
+      if (xAxis < 3 && direction != "left") {
         direction = "right";
       }
-      if (xAxis > 5 && direction != "right") { //If player moves the analog stick left, and if snake isn't going right.
+      if (xAxis > 5 && direction != "right") { 
         direction = "left";
       }
         
-      move(direction); //Move the snake in the direction.
+      move(direction);
         
       checkIfHitFood();
       checkIfHitSelf();
