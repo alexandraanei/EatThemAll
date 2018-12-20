@@ -1,5 +1,8 @@
 # S N A K E - Eat them all!
 
+### Gameplay:
+https://drive.google.com/file/d/141sDuH-wEj8x6J0Duy16ufoNHuEKcPrF/view
+
 ## **DESPRE**:
 Snake este jocul copilariei pentru foarte multi dintre noi. Este vorba despre un sarpe care se hraneste cu mere, iar pentru fiecare mar mancat creste in lungime.
 
