@@ -16,15 +16,19 @@ In aceasta versiune de snake, nu ai pereti, singura regula a jocului fiind sa nu
 La fiecare 3 mere mancate, viteza de tarare a sarpelui creste.
 
 ## **COMPONENTE**:
-- 2 breadboard-uri medii.
-- 1 breadboard mic.
-- 1 Arduino UNO.
-- 1 Cablu serial.
-- 1 Joystick.
-- 1 16x2 LCD.
-- 1 Matrice de leduri 8x8 3mm 1088AS.
-- 1 Driver MAX7219.
-- 1 Rezistenta 10k.
-- 1 Rezistenta 220.
-- Jumpere.
+- 2 breadboard-uri medii
+- 1 breadboard mic
+- 1 Arduino UNO
+- 1 Cablu serial
+- 1 Joystick
+- 1 16x2 LCD
+- 1 Matrice de leduri 8x8 3mm 1088AS
+- 1 Driver MAX7219
+- 1 Rezistenta 10k
+- 1 Rezistenta 220
+- Jumpere
 
+## **CUM SE JOACA?**:
+Pentru inceput, Snake se poate juca de un singur jucator. Acesta va apasa butonul joystick-ului pentru a incepe jocul.
+Pentru a misca sarpele, jucatorul trebuie sa miste de joystick in directia dorita. Jucatorul poate observa pe LCD scorul si viteza sarpelui.
+Cand jocul s-a incheiat, jucatorului i se va afisa pe LCD daca a facut highscore si actualul highscore. Dupa aceea, poate incepe un joc nou apasand butonul joystick-ului.

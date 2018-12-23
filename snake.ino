@@ -53,11 +53,9 @@ unsigned long lastFoodBlink = 0;
 
 void setup() {
   //Reseting the EEPROM's stored values if there is a resistor wired to A0 pin.
-  if(digitalRead(EEPROM_RESET_PIN) == HIGH){
-    for (int i = 0 ; i < EEPROM.length() ; i++) {
-      EEPROM.update(i, 0);
-    }         
-  }
+  /*for (int i = 0 ; i < EEPROM.length() ; i++) {
+    EEPROM.update(i, 0);
+  }        */
   
   pinMode(VRX_PIN, INPUT);
   pinMode(VRY_PIN, INPUT);
@@ -115,7 +113,7 @@ void loop() {
         direction = "left";
       }
         
-      move(direction);
+      moveSnake(direction);
         
       checkIfHitFood();
       checkIfHitSelf();
@@ -159,7 +157,7 @@ int simple(int num) {
 
 
 //This method makes the snake move in the direction provided in the parameters.
-void move(String dir) {
+void moveSnake(String dir) {
   for (int i=snakeSize-1; i>0; i--){ //Go through all the snake body parts (excluding the head), and set it to the previous position.
     snakeX[i] = snakeX[i-1];
     snakeY[i] = snakeY[i-1]; 
@@ -325,19 +323,12 @@ void gameOver() {
 
 
 void checkHighscore(int score){
-  int value[3];
+  int value;
   bool checked = 0;
-  addressIndex = 0;
-  
-  for (int i = 0; i < 3; i++) {
-    EEPROM.get(address + i, value[i]);
-    if (score > value[i] && checked == 0) {
-      value[i + 1] = value[i];
-      value[i] = score;
-      i++;
-      checked = 1;
-      addressIndex = i;
-    }
+  EEPROM.get(address, value);
+  if (score > value && checked == 0) {
+    value = score;
+    checked = 1;
   }
   
   if (checked == 1) {
@@ -345,15 +336,11 @@ void checkHighscore(int score){
     lcd.setCursor(0,0);
     lcd.print("Highscore!!!!!!!!");
     lcd.setCursor(0,1);
-    lcd.print(addressIndex);
-    lcd.print(".");
     lcd.print(score);
     delay(3000);
   }
   
-  for (int i = 0; i < 5; i++) {
-   EEPROM.update(address + i, value[i]);   
-  }
+  EEPROM.update(address, (byte)value); 
   
 }
 
@@ -366,33 +353,7 @@ void printHighscore() {
   lcd.print("1.");
   lcd.print(EEPROM.read(address));
   delay(3000);
-  
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("1.");
-  lcd.print(EEPROM.read(address));
-  lcd.setCursor(0,1);
-  lcd.print("2.");
-  lcd.print(EEPROM.read(address+1));
-  delay(3000);
-  
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("2.");
-  lcd.print(EEPROM.read(address+1));
-  lcd.setCursor(0,1);
-  lcd.print("3.");
-  lcd.print(EEPROM.read(address+2));
-  delay(3000);
-  
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("3.");
-  lcd.print(EEPROM.read(address+2));
-  lcd.setCursor(0,1);
-  lcd.print("Press joystick");
-  delay(3000);
-  
+   
   lcd.clear();
   lcd.setCursor(1, 0);
   lcd.print("Press joystick");
